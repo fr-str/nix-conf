@@ -1,0 +1,45 @@
+- 1.1.10
+- _NAME: MX Keys Keyboard
+  _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert,
+    thumb-scroll-mode, onboard_profiles, report_rate, pointer_speed, dpi, speed-change, backlight-timed, reprogrammable-keys, persistent-remappable-keys,
+    crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
+  _battery: 4096
+  _modelId: B35B408A0000
+  _sensitive: {divert-keys: true}
+  _serial: ACDE806F
+  _unitId: ACDE806F
+  _wpid: 408A
+  backlight: true
+  change-host: null
+  disable-keyboard-keys: {1: false, 2: false, 4: false, 8: false, 16: false}
+  divert-keys: {10: 0, 110: 0, 111: 0, 191: 0, 199: 0, 200: 0, 209: 0, 210: 0, 211: 0, 224: 0, 225: 0, 226: 0, 227: 0, 228: 0, 229: 0, 230: 0, 231: 0, 232: 0,
+    233: 1, 234: 0, 235: 0, 236: 0}
+  fn-swap: false
+  multiplatform: 0
+- _NAME: Wireless Mouse B330/M330/M331
+  _modelId: '405700000000'
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _serial: BB82CFAE
+  _unitId: BB82CFAE
+  _wpid: '4057'
+  divert-keys: {80: 0, 81: 0, 82: 0}
+  lowres-scroll-mode: false
+  pointer_speed: 256
+  reprogrammable-keys: {80: 80, 81: 81, 82: 82}
+- _NAME: Wireless Mobile Mouse MX Anywhere 2S
+  _absent: [hi-res-scroll, lowres-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert, thumb-scroll-mode, onboard_profiles, report_rate, pointer_speed,
+    speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys, disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds,
+    mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
+  _battery: 4096
+  _modelId: B01A406A0000
+  _sensitive: {change-host: false, hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _serial: DDEDE029
+  _unitId: 770F269F
+  _wpid: 406A
+  change-host: null
+  divert-keys: {82: 0, 83: 0, 86: 0, 91: 0, 93: 0}
+  dpi: 1000
+  hires-scroll-mode: false
+  hires-smooth-invert: false
+  hires-smooth-resolution: true
+  reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 91: 91, 93: 93}

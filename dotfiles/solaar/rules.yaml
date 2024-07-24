@@ -1,0 +1,17 @@
+%YAML 1.3
+---
+- Rule:
+  - And:
+    - KeyIsDown: Volume Up Fn
+    - And:
+      - Feature: REPROG CONTROLS V4
+      - TestBytes: [0, 2, 4]
+  - KeyPress:
+    - XF86_AudioRaiseVolume
+    - depress
+- Rule:
+  - Key: [Volume Up Fn, released]
+  - KeyPress:
+    - XF86_AudioRaiseVolume
+    - release
+...
