@@ -1,7 +1,4 @@
-{ pkgs, config, plasma-manager, ... }:
-let
-  cfg = config.modules.desktop;
-in
+{ plasma-manager, ... }:
 {
   imports = [
     plasma-manager.homeManagerModules.plasma-manager
@@ -320,7 +317,7 @@ in
       "kwinrc"."Plugins"."sticky-window-snappingEnabled" = true;
       "kwinrc"."Plugins"."tilerEnabled" = true;
       "kwinrc"."Script-kzones"."layoutsJson"="[\n{\n\"name\":\"PriorityGrid\",\n\"padding\":-5,\n\"zones\":[\n{\n\"x\":0,\n\"y\":0,\n\"height\":100,\n\"width\":25\n},\n{\n\"x\":25,\n\"y\":0,\n\"height\":100,\n\"width\":50\n},\n{\n\"x\":75,\n\"y\":0,\n\"height\":100,\n\"width\":25\n}\n]\n},\n{\n\"name\":\"QuadrantGrid\",\n\"zones\":[\n{\n\"x\":0,\n\"y\":0,\n\"height\":50,\n\"width\":50\n},\n{\n\"x\":0,\n\"y\":50,\n\"height\":50,\n\"width\":50\n},\n{\n\"x\":50,\n\"y\":50,\n\"height\":50,\n\"width\":50\n},\n{\n\"x\":50,\n\"y\":0,\n\"height\":50,\n\"width\":50\n}\n]\n}\n]";
-      "kwinrc"."Tiling"."padding" = -1;
+      "kwinrc"."Tiling"."padding" = -2;
       "kwinrc"."Tiling/2f1651a2-ad0d-5ef0-8910-e2731bf26278"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.23847656250000002},{\"width\":0.49277343749999836},{\"width\":0.26875000000000004}]}";
       "kwinrc"."Tiling/ace933c9-0c0f-5d30-bc8f-9206a7609f48"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling/d02c035d-eef0-5c68-aa2f-2e83d0ba08b1"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";

@@ -213,6 +213,7 @@ tmux switch-client -t $selected_name
 
       extraConfig = {
         pull.rebase = true;
+        url."git@github.com:".insteadOf = "https://github.com/";
       };
     };
   };

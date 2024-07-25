@@ -5,7 +5,6 @@ in
 {
   imports = [
     ./gaming.nix
-    # ./plasma.nix
   ];
 
 
