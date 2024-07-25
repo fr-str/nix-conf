@@ -15,13 +15,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
     nvidia-patch = {
       url = "github:keylase/nvidia-patch";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-edge, home-manager, nvidia-patch, ... }@attrs: {
+  outputs = { self, nixpkgs, nixpkgs-edge, home-manager, plasma-manager, nvidia-patch, ... }@attrs: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
@@ -41,6 +42,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          # home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
         }
       ];
     };
