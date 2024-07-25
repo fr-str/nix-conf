@@ -127,6 +127,7 @@
     unzip
     lazygit
     lazydocker
+    ripgrep
 
     # System
     efibootmgr
@@ -143,6 +144,7 @@
 
     # Filesystems
     exfatprogs
+    ntfs3g
 
     # Archivers
     p7zip
@@ -163,6 +165,9 @@
     delve
     air
 
+    # Misc
+    nodejs
+
     # Nix
     nil
     nixpkgs-fmt
@@ -174,6 +179,11 @@
     neovim.enable = true;
   };
   
+  fileSystems."/mnt/win" = {
+    device = "/dev/nvme1n1p3";
+    fsType = "ntfs-3g";
+    options = [ "auto" "nofail" "x-systemd.automount" ];
+  };
 
   # Docker
   virtualisation.docker.enable = true;

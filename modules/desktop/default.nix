@@ -5,19 +5,20 @@ in
 {
   imports = [
     ./gaming.nix
+    # ./plasma.nix
   ];
 
 
   options.modules.desktop = {
     enable = lib.mkEnableOption "Desktop module";
 
-    enviroment = {
-      gnome = lib.mkEnableOption "Gnome desktop module";
-    };
-
     gaming = {
       enable = lib.mkEnableOption "Gaming";
     };
+
+    # plasma = {
+    #   enable = lib.mkEnableOption "Plasma";
+    # };
   };
 
   # Common desktop configuration
@@ -140,6 +141,7 @@ in
         alacritty = {
           enable = true;
           settings = {
+            colors.primary.background = "#000000";
             font.normal.family = "JetBrainsMono Nerd Font";
             window = {
               opacity = 1;
@@ -155,8 +157,20 @@ in
         ssh = {
           enable = true;
           extraConfig = ''
-            Host serverek
-              HostName 192.168.0.109
+Host serverek
+	Hostname 192.168.0.109
+	User user
+	Port 22
+
+Host arm
+	Hostname 138.2.183.202
+	User ubuntu
+	Port 58008
+
+Host work
+	Hostname 106.120.84.195
+	User f.strzezek
+	ProxyCommand nc -X 5 -x 192.168.0.158:1080 %h %p
           '';
         };
       };

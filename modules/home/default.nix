@@ -19,8 +19,8 @@
 
     programs.zsh = {
       enable = true;
-      defaultKeymap = "emacs";
-      enableAutosuggestions = true;
+      # defaultKeymap = "emacs";
+      autosuggestion.enable = true;
       syntaxHighlighting.enable = true; 
       oh-my-zsh = {
         enable = true;
@@ -71,7 +71,7 @@
 	
 	alias vimf="nvim \$(find . -type d \( -name 'node_modules' -o -name '.cache' \) -prune -o -type f -print | fzf)";
 	alias vimf="nvim \$(find . -type d \( -name 'node_modules' -o -name '.cache' \) -prune -o -type f -print | fzf)";
-	alias vimg='fzf --ansi --bind "start:reload:$GREP_FZF_CMD {q}" --bind "change:reload:sleep 0.1 $GREP_FZF_CMD {q} || true" --preview "bat --color=always {1} --highlight-line {2}" --preview-window "up,60%,border-bottom,+{2}+3/3,~3" --delimiter : --bind "enter:become(nvim {1} +{2}"'
+	alias vimg='fzf --ansi --bind "start:reload:$GREP_FZF_CMD {q}" --bind "change:reload:sleep 0.1; $GREP_FZF_CMD {q} || true" --preview "bat --color=always {1} --highlight-line {2}" --preview-window "up,60%,border-bottom,+{2}+3/3,~3" --delimiter : --bind "enter:become(nvim {1} +{2})"'
 
 	alias gocd='f(){ CompileDaemon -build="$2" -directory="$3" -include="*.rs" -include="*.html" -include="*.sh" -include="*.toml" -include="*.zig" -color=true -log-prefix=false -command="$1" -command-stop=true; }; f';
 
@@ -144,7 +144,7 @@ bind -r f run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
-#set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'ofirgall/tmux-window-name'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'christoomey/vim-tmux-navigator'
@@ -157,7 +157,7 @@ if "test ! -d ~/.tmux/plugins/tpm" \
 run '~/.tmux/plugins/tpm/tpm'
         '';
     };
-    
+
     home.file.".local/bin/tmux-sessionizer".text = ''
 #!/usr/bin/env bash
 

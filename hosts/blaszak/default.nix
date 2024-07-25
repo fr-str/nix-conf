@@ -72,7 +72,7 @@
 
   # Configure keymap in X11
   services.xserver = {
-    xkbVariant = "";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.

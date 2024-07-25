@@ -574,24 +574,24 @@ require("lazy").setup({
 			vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 		end,
 	},
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	cmd = "Copilot",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require("copilot").setup({
-	-- 			panel = {
-	-- 				auto_refresh = true,
-	-- 			},
-	-- 			suggestion = {
-	-- 				auto_trigger = false,
-	-- 			},
-	-- 			filetypes = {
-	-- 				["*"] = true,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				panel = {
+					auto_refresh = true,
+				},
+				suggestion = {
+					auto_trigger = false,
+				},
+				filetypes = {
+					["*"] = true,
+				},
+			})
+		end,
+	},
 	{
 		"ThePrimeagen/git-worktree.nvim",
 		config = function()
