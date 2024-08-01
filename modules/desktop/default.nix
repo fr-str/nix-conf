@@ -141,6 +141,28 @@ in
           enable = true;
           settings = {
             colors.primary.background = "#000000";
+            colors.primary.foreground= "#ffffff";
+            colors.normal = {
+              black = "#000000";
+              red = "#fe0100";
+              green = "#33ff00";
+              yellow = "#feff00";
+              blue = "#0066ff";
+              magenta = "#cc00ff";
+              cyan = "#00ffff";
+              white = "#d0d0d0";
+            };
+            colors.bright = {
+              black = "#808080";
+              red = "#fe0100";
+              green = "#33ff00";
+              yellow = "#feff00";
+              blue = "#0066ff";
+              magenta = "#cc00ff";
+              cyan = "#00ffff";
+              white = "#FFFFFF";
+            };
+
             font.normal.family = "JetBrainsMono Nerd Font";
             window = {
               opacity = 1;
@@ -220,10 +242,14 @@ Host work
 
     # Add zram
     # TODO: https://wiki.archlinux.org/title/Zram#Optimizing_swap_on_zram
-    zramSwap = {
-      enable = true;
-      memoryPercent = 20;
-    };
+    # zramSwap = {
+    #   enable = true;
+    #   memoryPercent = 20;
+    # };
+    swapDevices =[{
+      device = "/swapfile";
+      size = 81*1024;
+    }];
 
     # Enable scanners
     hardware.sane.enable = true;
