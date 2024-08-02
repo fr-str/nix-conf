@@ -15,6 +15,9 @@
     # Use latest kernel
     #kernelPackages = pkgs-edge.linuxPackages_latest;
 
+    kernelParams = [ "resume-/swapfile" "resume_offset=108175360" ];
+    resumeDevice = "/dev/disk/by-uuid/895d43fd-ffa9-41c2-bdc4-b1522e5e7b3f";
+
     # Bootloader
     loader = {
       timeout = 0;
@@ -105,11 +108,11 @@
     l = "ls -lah"; # all files list
   };
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-    }))
-  ];
+  # nixpkgs.overlays = [
+  #   (import (builtins.fetchTarball {
+  #     url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+  #   }))
+  # ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -128,6 +131,7 @@
     lazygit
     lazydocker
     ripgrep
+    ranger
 
     # System
     efibootmgr
