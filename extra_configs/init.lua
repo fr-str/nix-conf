@@ -305,7 +305,9 @@ require("lazy").setup({
 			local servers = {
 				clangd = {},
 				gopls = {},
-
+				-- nix LSP and formatter
+				nil_ls = {},
+				nixpkgsfmt = {},
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},

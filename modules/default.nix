@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{  inputs, config, lib, pkgs, ... }:
 {
   # Modules
   imports = [
@@ -108,11 +108,6 @@
     l = "ls -lah"; # all files list
   };
 
-  # nixpkgs.overlays = [
-  #   (import (builtins.fetchTarball {
-  #     url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-  #   }))
-  # ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -171,18 +166,23 @@
 
     # Misc
     nodejs
+    rustup
 
-    # Nix
-    nil
-    nixpkgs-fmt
+    # # Nix
+    # nil
+    # nixpkgs-fmt
   ];
 
   programs = {
     git.enable = true;
     zsh.enable = true;
-    neovim.enable = true;
+    neovim = {
+      enable = true;
+        defaultEditor = true;
+        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    };
   };
-  
+
   # fileSystems."/mnt/win" = {
   #   device = "/dev/nvme1n1p3";
   #   fsType = "ntfs-3g";
