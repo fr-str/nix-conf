@@ -31,7 +31,7 @@
   home-manager.users.${config.user.name} = {
     # Git config
    programs.git = {
-     userName = "Franciszek";
+     userName = "Franciszek Strzeżek";
      userEmail = "fr.strzezek@gmail.com";
    };
 
