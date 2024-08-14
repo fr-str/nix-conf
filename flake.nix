@@ -23,11 +23,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-edge, home-manager, plasma-manager, nvidia-patch, ... }@attrs: {
+  outputs = { self, nixpkgs, nixpkgs-edge, home-manager, plasma-manager, nvidia-patch, ... }@inputs: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
-        inherit attrs;
+        inherit inputs;
 
         pkgs-edge = import nixpkgs-edge {
           inherit system;

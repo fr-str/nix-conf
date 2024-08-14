@@ -1,4 +1,4 @@
-{  inputs, config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 {
   # Modules
   imports = [
@@ -178,8 +178,8 @@
     zsh.enable = true;
     neovim = {
       enable = true;
-        defaultEditor = true;
-        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+      defaultEditor = true;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
   };
 
