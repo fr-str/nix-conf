@@ -55,6 +55,8 @@
         gic="git clone";
         rr="rm -rf";
         mult="sed -e 's/, \"/,\n\t\"/g' -e 's/{/{\n\t/g' -e 's/\}/\n}/g'";
+        touchg="vmtouch_game";
+        touchgi="vmtouch_game info";
 
         # NixOS aliases
         nix-apply = "sudo " + config.environment.shellAliases.nix-apply;
@@ -62,7 +64,7 @@
       };
 
       initExtra = ''
-	export EDITOR=nvim
+       	export EDITOR=nvim
   alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
 	upgo='dupa=$PWD && cd ~/.update-golang && git pull && $su ~/.update-golang/update-golang.sh && cd $dupa';
 	find_dirs="\$(find . -type d \( -name '.cache' -o -name 'cache' -o -name '.git' -o -name 'node_modules' \) -prune -o -type d -print 2> /dev/null | fzf)"
@@ -75,27 +77,47 @@
 
 	alias gocd='f(){ CompileDaemon -build="$2" -directory="$3" -include="*.rs" -include="*.html" -include="*.sh" -include="*.toml" -include="*.zig" -color=true -log-prefix=false -command="$1" -command-stop=true; }; f';
 
-  PS1="%(?.%F{green}.%F{red})❯ %f"
-  # Functions
-  function localip() {
-      echo $(ip route get 1.1.1.1 | awk -F"src " 'NR==1{split($2,a," ");print a[1]}')
-  }
+        PS1="%(?.%F{green}.%F{red})❯ %f"
+        # Functions
+        function localip() {
+            echo $(ip route get 1.1.1.1 | awk -F"src " 'NR==1{split($2,a," ");print a[1]}')
+        }
 
-  # Better help formatting with ? or --help
-  function help {
-      # Replace ? with --help flag
-      if [[ "$BUFFER" =~ '^(-?\w\s?)+\?$' ]]; then
-          BUFFER="''${BUFFER::-1} --help"
-      fi
+        function vmtouch_game() {
+            local game=$(ls "/mnt/games/SteamLibrary/steamapps/common/" | fzf)
+            
+            # Check if fzf returned an empty result
+            if [ -z "$game" ]; then
+                echo "No game selected."
+                return 1
+            fi
+            
+            # Check if the first argument is empty
+            # if so print cache info
+            if [ -n "$1" ]; then
+                vmtouch "/mnt/games/SteamLibrary/steamapps/common/$game"
+                return 0
+            else
+                # load selected game to cache
+                vmtouch -t "/mnt/games/SteamLibrary/steamapps/common/$game"
+            fi
+        }
 
-      # If --help flag found, pipe output through bat
-      if [[ "$BUFFER" =~ '^(-?\w\s?)+ --help$' ]]; then
-          BUFFER="$BUFFER | bat -p -l help"
-      fi
+        # Better help formatting with ? or --help
+        function help {
+            # Replace ? with --help flag
+            if [[ "$BUFFER" =~ '^(-?\w\s?)+\?$' ]]; then
+                BUFFER="''${BUFFER::-1} --help"
+            fi
 
-      # press enter
-      zle accept-line
-  }
+            # If --help flag found, pipe output through bat
+            if [[ "$BUFFER" =~ '^(-?\w\s?)+ --help$' ]]; then
+                BUFFER="$BUFFER | bat -p -l help"
+            fi
+
+            # press enter
+            zle accept-line
+        }
 
 	autoload -U add-zsh-hook
  	add-zsh-hook chpwd tmux-window-name
@@ -116,6 +138,7 @@
     clock24 = true;
     extraConfig = ''
 set -g mouse on
+setw -g mode-keys vi
 
 set -s set-clipboard on
 set -g base-index 1
@@ -149,7 +172,7 @@ set -g @plugin 'ofirgall/tmux-window-name'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/tmux-cpu'
-#set -g @plugin '27medkamal/tmux-session-wizard'
+set -g @plugin '27medkamal/tmux-session-wizard'
 
 if "test ! -d ~/.tmux/plugins/tpm" \
    "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"

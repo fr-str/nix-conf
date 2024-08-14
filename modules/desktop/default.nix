@@ -51,6 +51,7 @@ in
       firefox
       discord
       slack
+      thunderbird
     ];
 
     # Add support for running aarch64 binaries on x86_64
@@ -219,6 +220,14 @@ Host work
         ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
       '';
     };
+    hardware.bluetooth.enable = true; 
+    hardware.bluetooth.settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+    hardware.bluetooth.powerOnBoot = true; 
+    services.blueman.enable = true;
 
     # Setup desktop services
     services = {

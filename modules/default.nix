@@ -139,7 +139,7 @@
     pciutils
     usbutils
     btop
-
+    vmtouch
     # Networking
     nmap
     wget
@@ -183,10 +183,28 @@
     neovim.enable = true;
   };
   
-  fileSystems."/mnt/win" = {
-    device = "/dev/nvme1n1p3";
-    fsType = "ntfs-3g";
+  # fileSystems."/mnt/win" = {
+  #   device = "/dev/nvme1n1p3";
+  #   fsType = "ntfs-3g";
+  #   options = [ "auto" "nofail" "x-systemd.automount" ];
+  # };
+  fileSystems."/mnt/games" = {
+    device = "/dev/nvme1n1p1";
+    fsType = "ext4";
     options = [ "auto" "nofail" "x-systemd.automount" ];
+  };
+
+  systemd.services.set-games-permissions = {
+    description = "Set ownership and permissions for /mnt/games";
+    wantedBy = [ "multi-user.target" ];
+    script = ''
+      chown -R ${config.user.name}:users /mnt/games
+      chmod -R 775 /mnt/games
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
   };
 
   # Docker
