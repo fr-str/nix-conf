@@ -127,6 +127,8 @@
     lazydocker
     ripgrep
     ranger
+    sysstat
+    tldr
 
     # System
     efibootmgr

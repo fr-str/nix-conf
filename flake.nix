@@ -23,7 +23,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-edge, home-manager, plasma-manager, nvidia-patch, ... }@inputs: {
+  outputs = { self,neovim-nightly-overlay, nixpkgs, nixpkgs-edge, home-manager, plasma-manager, nvidia-patch, ... }@inputs: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
@@ -44,6 +44,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           # home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+          nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         }
       ];
     };
