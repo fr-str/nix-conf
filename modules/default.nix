@@ -143,6 +143,7 @@
     wget
     rsync
     arp-scan
+    tailscale
 
     # Filesystems
     exfatprogs
@@ -208,4 +209,5 @@
   # Docker
   virtualisation.docker.enable = true;
   systemd.services.docker.wantedBy = lib.mkForce [ ];
+  services.tailscale.enable = true;
 }
