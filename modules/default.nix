@@ -178,11 +178,6 @@
   programs = {
     git.enable = true;
     zsh.enable = true;
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-    };
   };
 
   # fileSystems."/mnt/win" = {

@@ -212,10 +212,6 @@ tmux switch-client -t $selected_name
 
     # nvim
     home.file.".config/nvim/init.lua".source = "/etc/nixos/extra_configs/init.lua";
-    programs.neovim={
-      enable = true;
-      defaultEditor = true;
-    };
 
 
     programs.git = {
