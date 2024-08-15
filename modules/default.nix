@@ -129,6 +129,7 @@
     ranger
     sysstat
     tldr
+    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
 
     # System
     efibootmgr
