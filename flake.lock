@@ -253,22 +253,6 @@
         "type": "github"
       }
     },
-    "nvidia-patch": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1723286515,
-        "narHash": "sha256-sjrNf8ZUm5HF9UVmBmD2uJUWDtZJOF4brfnVt1FTXHY=",
-        "owner": "keylase",
-        "repo": "nvidia-patch",
-        "rev": "fc299168b83bacd317ceeaf3a850ecf2f1b9d66f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "keylase",
-        "repo": "nvidia-patch",
-        "type": "github"
-      }
-    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -298,7 +282,6 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-edge": "nixpkgs-edge",
-        "nvidia-patch": "nvidia-patch",
         "plasma-manager": "plasma-manager"
       }
     }

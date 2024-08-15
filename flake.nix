@@ -17,13 +17,13 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nvidia-patch = {
-      url = "github:keylase/nvidia-patch";
-      flake = false;
-    };
+#    nvidia-patch = {
+#      url = "github:keylase/nvidia-patch";
+#      flake = false;
+#    };
   };
 
-  outputs = { self,neovim-nightly-overlay, nixpkgs, nixpkgs-edge, home-manager, plasma-manager, nvidia-patch, ... }@inputs: {
+  outputs = { self,neovim-nightly-overlay, nixpkgs, nixpkgs-edge, home-manager, plasma-manager, ... }@inputs: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
@@ -37,7 +37,7 @@
 
       modules = [
         ({ ... }: { nix.registry.nixpkgs.flake = nixpkgs; })
-        ./hosts/blaszak
+        ./hosts/frstr
 
         home-manager.nixosModules.home-manager
         {

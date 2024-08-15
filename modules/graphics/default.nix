@@ -1,10 +1,10 @@
 { lib, ... }:
 {
   imports = [
-    ./nvidia.nix
+#    ./nvidia.nix
   ];
 
-  options.modules.graphics = {
-    nvidia = lib.mkEnableOption "Nvidia graphics module";
-  };
+#  options.modules.graphics = {
+   # nvidia = lib.mkEnableOption "Nvidia graphics module";
+  #};
 }

@@ -129,7 +129,6 @@
     ranger
     sysstat
     tldr
-    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
 
     # System
     efibootmgr
@@ -179,6 +178,11 @@
   programs = {
     git.enable = true;
     zsh.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    };
   };
 
   # fileSystems."/mnt/win" = {
@@ -186,24 +190,24 @@
   #   fsType = "ntfs-3g";
   #   options = [ "auto" "nofail" "x-systemd.automount" ];
   # };
-  fileSystems."/mnt/games" = {
-    device = "/dev/nvme1n1p1";
-    fsType = "ext4";
-    options = [ "auto" "nofail" "x-systemd.automount" ];
-  };
-
-  systemd.services.set-games-permissions = {
-    description = "Set ownership and permissions for /mnt/games";
-    wantedBy = [ "multi-user.target" ];
-    script = ''
-      chown -R ${config.user.name}:users /mnt/games
-      chmod -R 775 /mnt/games
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-  };
+#  fileSystems."/mnt/games" = {
+#    device = "/dev/nvme1n1p1";
+#    fsType = "ext4";
+#    options = [ "auto" "nofail" "x-systemd.automount" ];
+#  };
+#
+#  systemd.services.set-games-permissions = {
+#    description = "Set ownership and permissions for /mnt/games";
+#    wantedBy = [ "multi-user.target" ];
+#    script = ''
+#      chown -R ${config.user.name}:users /mnt/games
+#      chmod -R 775 /mnt/games
+#    '';
+#    serviceConfig = {
+#      Type = "oneshot";
+#      RemainAfterExit = true;
+#    };
+#  };
 
   # Docker
   virtualisation.docker.enable = true;

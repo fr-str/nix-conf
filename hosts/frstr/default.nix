@@ -9,18 +9,18 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   user = {
-    name = "blaszak";
-    description = "blaszak";
+    name = "frstr";
+    description = "frstr";
   };
 
 
   # Enable modules
   modules = {
-    graphics.nvidia = true;
+#    graphics.nvidia = true;
 
     desktop = {
       enable = true;
-      gaming.enable = true;
+#      gaming.enable = true;
     };
   };
 
