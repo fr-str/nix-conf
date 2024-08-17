@@ -103,6 +103,7 @@
             fi
         }
 
+        eval "$(fzf --zsh)"
         # Better help formatting with ? or --help
         function help {
             # Replace ? with --help flag
